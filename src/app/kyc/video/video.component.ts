@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { ActivatedRoute, Router } from '@angular/router';
 import { log } from '@tensorflow/tfjs';
 import * as faceapi from 'face-api.js'
 
@@ -18,11 +19,15 @@ export class VideoComponent implements OnInit {
   public userImg!: SafeUrl
   public timer!: NodeJS.Timeout
   public capturingIn: number = 3
+  public nextStepIn: number = 5
 
   @ViewChild('videoElement') videoElement!: ElementRef;
   @ViewChild('canvasElement') canvasElement!: ElementRef;
 
-  constructor(private sanitizer: DomSanitizer) {
+  constructor(
+    private readonly _router: Router,
+    private readonly _route: ActivatedRoute
+  ) {
     void this._mediaRecorderSetUp()
   }
 
@@ -100,6 +105,7 @@ export class VideoComponent implements OnInit {
                   this._stream.getTracks().forEach((track) => {
                     track.stop()
                   })
+                  this.nextStep()
                 } else {
                   this.capturingIn = 3
                 }
@@ -147,4 +153,16 @@ export class VideoComponent implements OnInit {
     })
   }
 
+  public nextStep(): void {
+    let next = setInterval(() => {
+      if (this.nextStepIn === 0) {
+        clearInterval(next)
+        this._router.navigate(['../otp'], {
+          relativeTo: this._route
+        })
+      } else {
+        this.nextStepIn--
+      }
+    }, 1000)
+  }
 }

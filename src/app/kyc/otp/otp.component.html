@@ -1,7 +1,39 @@
-<!-- <input type="text" [(ngModel)]="mobileNo" (change)=phonenumber() onkeypress="return /[0-9]/i.test(event.key)"> -->
-<div class="p-inputgroup">
-    <input type="password" pInputText placeholder="Passowrd" [(ngModel)]="mobileNo" (change)=phonenumber() onkeypress="return /[0-9]/i.test(event.key)" />
-    <span class="p-inputgroup-addon"><i class="pi pi-phone"></i></span>
+<div class="otp-page">
+    <div class="user-msgs">
+        <div class="valid-user">Verify your mobile number</div>
+    </div>
+
+    <div id="mobile" class="mobile">
+        <div class="p-inputgroup">
+            <input type="text" pInputText placeholder="Mobile No." [(ngModel)]="mobileNo" (input)=phonenumber()
+                onkeypress="return /[0-9]/i.test(event.key)" />
+            <span class="p-inputgroup-addon"><i class="pi pi-phone"></i></span>
+        </div>
+        <br>
+        <div class="error-msg" *ngIf="invalidNumber">
+            Invalid mobile number
+        </div>
+        <p-button (click)="generateOTP()">Send OTP</p-button>
+    </div>
+    <div id="otp" class="otp">
+        <div class="back">
+            <span (click)="back()"> <i class="pi pi-arrow-left"></i> &nbsp; Back</span>
+        </div>
+        <ng-otp-input (onInputChange)="onOtpChange($event)" #ngOtpInput [config]="otpConfig"></ng-otp-input>
+        <div class="resend-div mt-2">
+            <div class="resend-btn" id="resendBtn" (click)="resendOtp()"
+                [ngClass]="resendOtpButtonState?'disable-resend-otp':''">
+                Resend OTP?</div>
+            <div class="resend-countdown">
+                <countdown #resendOTP [config]="resendcountDownConfig" (event)="handleResendOTPTimerEvent($event)">
+                </countdown>
+            </div>
+        </div>
+        <div id="verifyBtn">
+            <p-button type="button" class="verify" (click)="verifyOtp()">Verify</p-button>
+        </div>
+        <div class="next" *ngIf="generatedOTP == enteredOTP">
+            <div class="next-step">Getting you to the next step in {{nextStepIn}}</div>
+        </div>
+    </div>
 </div>
-<br><br><br>
-<p-button (click)="generateOTP()">Send OTP</p-button>

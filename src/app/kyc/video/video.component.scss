@@ -46,6 +46,19 @@
     }
 }
 
+.next {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-family: cursive;
+
+    .next-step {
+        color: #0C3823;
+    }
+}
+
 .user-image {
     height: 100%;
     width: 100%;

@@ -23,7 +23,7 @@
     "@types/webgl2": "^0.0.11",
     "face-api.js": "^0.22.2",
     "ng-otp-input": "^1.9.3",
-    "ngx-countdown": "^17.1.1",
+    "ngx-countdown": "^14.0.0",
     "primeicons": "^6.0.1",
     "primeng": "^16.8.0",
     "rxjs": "~7.8.0",

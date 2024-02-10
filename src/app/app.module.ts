@@ -11,6 +11,8 @@ import { PasswordComponent } from './kyc/password/password.component';
 import { PrimengModule } from "./primeng/primeng.module";
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CountdownModule } from 'ngx-countdown';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     PrimengModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CountdownModule,
+    NgOtpInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

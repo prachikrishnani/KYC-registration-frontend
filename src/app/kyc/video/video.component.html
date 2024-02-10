@@ -3,7 +3,8 @@
     <div class="user-msgs">
         <div class="invalid-user" *ngIf="invalidUser">No user detected</div>
         <div class="multi-user" *ngIf="multiuser">Multi user detected</div>
-        <div class="valid-user" *ngIf="validUser">You are good to go, Capturing in ... {{capturingIn}}</div>
+        <div class="valid-user" *ngIf="validUser && !userImg">You are good to go, Capturing in ... {{capturingIn}}</div>
+        <div class="valid-user" *ngIf="userImg">Done</div>
         <div class="loading-user" *ngIf="!validUser && !invalidUser && !multiuser">Loading ...</div>
     </div>
     <div id="userVideo" class="">
@@ -16,5 +17,9 @@
     </div>
     <div id="userImg" class="">
         <img class="user-image" [src]="userImg" alt="">
+    </div>
+
+    <div class="next" *ngIf="userImg">
+        <div class="next-step">Getting you to the next step in {{nextStepIn}}</div>
     </div>
 </div>

@@ -1,5 +1,160 @@
+.otp-page {
+    width: 80%;
+    margin: 2rem auto;
+    text-align: center;
+
+    #mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
+    }
+}
+
+#otp {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.user-msgs {
+    width: 80%;
+    margin: 2rem auto;
+    display: flex;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    font-family: cursive;
+
+    .valid-user {
+        color: #399953;
+    }
+}
+
+.error-msg {
+    color: #d53e33;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 0.8rem;
+    font-family: cursive;
+}
+.back{
+    display: flex;
+    width: 80%;
+    justify-content: flex-start;
+}
+.resend-div {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+.next {
+    margin: 1rem;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 1rem;
+    font-family: cursive;
+
+    .next-step {
+        color: #0C3823;
+    }
+}
+
 :host ::ng-deep .p-button {
-    color: #6C63FF;
-    border: 2px solid #6C63FF;
+    color: rgba(90, 171, 97, 0.6196078431);
+    border: 2px solid rgba(90, 171, 97, 0.6196078431);
     background-color: #FFF;
+}
+
+:host ::ng-deep .p-inputgroup {
+    max-width: 20rem;
+}
+
+:host ::ng-deep .p-inputgroup-addon {
+    background: rgba(90, 171, 97, 0.6196078431);
+    // opacity: 0.7;
+    color: #FFF;
+}
+
+:host ::ng-deep .p-inputtext:enabled:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.03rem rgba(90, 171, 97, 0.6196078431);
+    border-color: rgba(90, 171, 97, 0.6196078431);
+}
+
+:host ::ng-deep .p-inputtext:enabled:hover {
+    border-color: rgba(90, 171, 97, 0.6196078431);
+}
+
+
+.fade-in-right {
+    -webkit-animation: fade-in-right 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in-right 3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+.fade-in-left {
+    -webkit-animation: fade-in-left 1s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+    animation: fade-in-left 3s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+
+@-webkit-keyframes fade-in-right {
+    0% {
+        -webkit-transform: translateX(50px);
+        transform: translateX(50px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-right {
+    0% {
+        -webkit-transform: translateX(50px);
+        transform: translateX(50px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fade-in-left {
+    0% {
+        -webkit-transform: translateX(-50px);
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-left {
+    0% {
+        -webkit-transform: translateX(-50px);
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+
+    100% {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
