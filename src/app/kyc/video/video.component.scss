@@ -1,5 +1,6 @@
 .invalid-video-card,
-.valid-video-card {
+.valid-video-card,
+.loading-video-card {
     width: 20rem;
     height: 24rem;
     display: flex;
@@ -39,8 +40,21 @@
     .invalid-user {
         color: #d53e33;
     }
+
+    .loading-user {
+        color: #868686;
+    }
 }
 
+.user-image {
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+}
+
+#userImg {
+    display: none;
+}
 
 @keyframes rotate {
     100% {
@@ -116,6 +130,48 @@
         background-size: 50% 50%, 50% 50%;
         background-position: 0 0, 100% 0, 100% 100%, 0 100%;
         background-image: linear-gradient(#399953, #399953), linear-gradient(#399953, #399953), linear-gradient(#399953, #399953), linear-gradient(#399953, #fff);
+        animation: rotate 4s linear infinite;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        left: 6px;
+        top: 6px;
+        width: calc(100% - 12px);
+        height: calc(100% - 12px);
+        background: white;
+        border-radius: 5px;
+    }
+}
+
+.loading-video-card {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 0.3rem;
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+    font-weight: bold;
+
+    &::before {
+        content: '';
+        position: absolute;
+        z-index: -2;
+        left: -50%;
+        top: -50%;
+        width: 200%;
+        height: 200%;
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-size: 50% 50%, 50% 50%;
+        background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+        background-image: linear-gradient(#fff, #fff), linear-gradient(#fff, #fff), linear-gradient(#fff, #fff), linear-gradient(#fff, #fff);
         animation: rotate 4s linear infinite;
     }
 
