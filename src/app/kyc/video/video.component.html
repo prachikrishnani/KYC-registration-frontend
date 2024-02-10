@@ -1,1 +1,13 @@
-<p>video works!</p>
+<div class="user-video">
+
+    <div class="user-msgs">
+        <div class="invalid-user" *ngIf="invalidUser">No user detected</div>
+        <div class="multi-user"*ngIf="multiuser">Multi user detected</div>
+        <div class="valid-user" *ngIf="validUser">You are good to go</div>
+    </div>
+
+    <div [ngClass]="invalidUser || multiuser ? 'invalid-video-card':'valid-video-card'">
+        <video id="videoDiv" #videoElement autoplay [muted]="true"></video>
+        <canvas id="canvasDiv" #canvasElement></canvas>
+    </div>
+</div>

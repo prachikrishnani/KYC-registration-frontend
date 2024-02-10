@@ -7,4 +7,12 @@ import { Component } from '@angular/core';
 })
 export class PasswordComponent {
 
+  public password: string=''
+  public confirmPassword: string=''
+
+  public continue(): void {
+    if (this.password != this.confirmPassword || this.password =='' || this.confirmPassword =='') {
+      alert('passowrd doesnt matched')
+    }
+  }
 }

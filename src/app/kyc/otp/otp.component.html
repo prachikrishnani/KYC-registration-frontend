@@ -1,1 +1,7 @@
-<p>otp works!</p>
+<!-- <input type="text" [(ngModel)]="mobileNo" (change)=phonenumber() onkeypress="return /[0-9]/i.test(event.key)"> -->
+<div class="p-inputgroup">
+    <input type="password" pInputText placeholder="Passowrd" [(ngModel)]="mobileNo" (change)=phonenumber() onkeypress="return /[0-9]/i.test(event.key)" />
+    <span class="p-inputgroup-addon"><i class="pi pi-phone"></i></span>
+</div>
+<br><br><br>
+<p-button (click)="generateOTP()">Send OTP</p-button>

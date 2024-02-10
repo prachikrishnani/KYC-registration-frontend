@@ -1,1 +1,44 @@
-<p>kyc works!</p>
+<div class="main">
+    <div class="logos">
+        <div class="heading">
+            KYC Registration
+        </div>
+        <div class="steps">
+            <div class="line"></div>
+            <div class="steps-data">
+                <div class="step">
+                    <div class="step-icon" [ngClass]="currentStep ===1?'active-icon':''"
+                        (click)="changeStep(1,'video')"><i class="pi pi-video"></i></div>
+                    <div [ngClass]="currentStep ===1?'active-label':''" class="step-label" (click)="changeStep(1,'video')">Live Capture</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon" [ngClass]="currentStep ===2?'active-icon':''" (click)="changeStep(2,'otp')">
+                        <i class="pi pi-mobile"></i>
+                    </div>
+                    <div [ngClass]="currentStep ===2?'active-label':''" class="step-label" (click)="changeStep(2,'otp')">OTP Verification</div>
+                </div>
+                <div class="step">
+                    <div class="step-icon" [ngClass]="currentStep ===3?'active-icon':''"
+                        (click)="changeStep(3,'password')"><i class="pi pi-lock"></i></div>
+                    <div [ngClass]="currentStep ===3?'active-label':''" class="step-label" (click)="changeStep(3,'password')">Set Passowrd</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-one" [hidden]="currentStep !==1">
+            <img class="logo" src="assets/imgs/video.svg" alt="">
+        </div>
+        <div class="step-two" [hidden]="currentStep !==2">
+            <img class="logo" src="assets/imgs/otp.svg" alt="">
+        </div>
+        <div class="step-three" [hidden]="currentStep !==3">
+            <img class="logo" src="assets/imgs/password.svg" alt="">
+        </div>
+
+    </div>
+    <div class="kyc-data">
+        <p-card class="kyc-data-card">
+            <router-outlet></router-outlet>
+        </p-card>
+    </div>
+</div>

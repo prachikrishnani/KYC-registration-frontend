@@ -8,6 +8,10 @@ import { VideoComponent } from './kyc/video/video.component';
 import { OtpComponent } from './kyc/otp/otp.component';
 import { PasswordComponent } from './kyc/password/password.component';
 
+import { PrimengModule } from "./primeng/primeng.module";
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +22,10 @@ import { PasswordComponent } from './kyc/password/password.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PrimengModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
