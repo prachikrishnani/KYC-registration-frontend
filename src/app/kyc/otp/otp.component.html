@@ -1,6 +1,7 @@
 <div class="otp-page">
     <div class="user-msgs">
-        <div class="valid-user">Verify your mobile number</div>
+        <div class="valid-user" *ngIf="generatedOTP != enteredOTP || enteredOTP==''">Verify your mobile number</div>
+        <div class="valid-user" *ngIf="generatedOTP == enteredOTP && enteredOTP!=''">Verified</div>
     </div>
 
     <div id="mobile" class="mobile">
@@ -20,7 +21,7 @@
             <span (click)="back()"> <i class="pi pi-arrow-left"></i> &nbsp; Back</span>
         </div>
         <ng-otp-input (onInputChange)="onOtpChange($event)" #ngOtpInput [config]="otpConfig"></ng-otp-input>
-        <div class="resend-div mt-2">
+        <div class="resend-div mt-2" *ngIf="generatedOTP != enteredOTP || enteredOTP==''">
             <div class="resend-btn" id="resendBtn" (click)="resendOtp()"
                 [ngClass]="resendOtpButtonState?'disable-resend-otp':''">
                 Resend OTP?</div>
@@ -28,6 +29,9 @@
                 <countdown #resendOTP [config]="resendcountDownConfig" (event)="handleResendOTPTimerEvent($event)">
                 </countdown>
             </div>
+        </div>
+        <div class="error-msg" *ngIf="enteredOTP != generatedOTP && enteredOTP !=''">
+            Invalid OTP
         </div>
         <div id="verifyBtn">
             <p-button type="button" class="verify" (click)="verifyOtp()">Verify</p-button>

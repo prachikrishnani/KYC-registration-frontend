@@ -69,6 +69,9 @@
     border: 2px solid rgba(90, 171, 97, 0.6196078431);
     background-color: #FFF;
 }
+:host ::ng-deep .p-button:focus {
+    box-shadow: none;
+}
 
 :host ::ng-deep .p-inputgroup {
     max-width: 20rem;

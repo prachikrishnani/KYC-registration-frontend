@@ -151,6 +151,8 @@ export class VideoComponent implements OnInit {
     this._stream.getTracks().forEach((track) => {
       track.stop()
     })
+    clearInterval(this._faceDetectTimer)
+    clearInterval(this.timer)
   }
 
   public nextStep(): void {

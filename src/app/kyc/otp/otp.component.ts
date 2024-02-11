@@ -10,7 +10,7 @@ import { CountdownComponent, CountdownConfig, CountdownEvent } from 'ngx-countdo
 })
 export class OtpComponent implements OnInit {
   public generatedOTP!: string
-  public enteredOTP!: string
+  public enteredOTP: string=''
   public mobileNo!: string
   public invalidNumber = false
   public resendOtpButtonState: boolean = true;
@@ -65,8 +65,6 @@ export class OtpComponent implements OnInit {
       this._handleDiv('otp', 'flex');
       this._handleAddClass('otp', 'fade-in-right');
       this.startCountdown();
-      console.log(this.generatedOTP);
-
     }
   }
 
@@ -133,9 +131,9 @@ export class OtpComponent implements OnInit {
         let next = setInterval(() => {
           if (this.nextStepIn === 0) {
             clearInterval(next)
-            // this._router.navigate(['../password'], {
-            //   relativeTo: this._route
-            // })
+            this._router.navigate(['../password'], {
+              relativeTo: this._route
+            })
           } else {
             this.nextStepIn--
           }

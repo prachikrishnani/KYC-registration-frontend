@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationStart, Router } from '@angular/router';
 
 @Component({
   selector: 'app-kyc',
@@ -9,12 +9,17 @@ import { Router } from '@angular/router';
 export class KycComponent {
 
 
-  public currentStep = 1
+  public currentStep!: number
 
   constructor(
     private _router: Router
   ) {
-    this.checkCurrentStep()
+    this._router.events.subscribe((event: any) => {
+      if (event instanceof NavigationStart) {
+        this.checkCurrentStep(event.url)
+      }
+    });
+    this.checkCurrentStep(_router.url)
   }
 
   public changeStep(step: 1 | 2 | 3, routeTo: 'video' | 'otp' | 'password'): void {
@@ -22,12 +27,12 @@ export class KycComponent {
     this._router.navigate([routeTo])
   }
 
-  public checkCurrentStep(): void {
-    if (this._router.url.includes('video')) {
+  public checkCurrentStep(url: string): void {
+    if (url.includes('video')) {
       this.currentStep = 1
-    } else if (this._router.url.includes('otp')) {
+    } else if (url.includes('otp')) {
       this.currentStep = 2
-    } else if (this._router.url.includes('password')) {
+    } else if (url.includes('password')) {
       this.currentStep = 3
     }
   }
